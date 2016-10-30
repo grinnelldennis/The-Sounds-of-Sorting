@@ -24,6 +24,11 @@ public class ArrayPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        // TODO: fill me in
+    	Integer[] nts = notes.getNotes();
+        int rectWidth = getWidth() / nts.length;
+        for(int i = 0; i < nts.length; i++) {
+        	int height = getHeight() / nts.length * nts[i];
+        	g.drawRect(rectWidth * i, 0, rectWidth, height);
+        }
     }
 }

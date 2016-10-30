@@ -1,17 +1,23 @@
 package edu.grinnell.sortingvisualizer;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * A collection of indices into a Scale object.
  * These indices are the subject of the various sorting algorithms
  * in the program.
  */
 public class NoteIndices {
+	private Integer[] notes;
+	private boolean[] isHighlighted;
 
     /**
      * @param n the size of the scale object that these indices map into
      */
     public NoteIndices(int n) {
-        // TODO: fill me in
+    	initializeAndShuffle(n);
     }
     
     /**
@@ -21,13 +27,19 @@ public class NoteIndices {
      * @param n the size of the scale object that these indices map into
      */
     public void initializeAndShuffle(int n) {
-        // TODO: fill me in
+    	List<Integer> lst = new ArrayList<>(n);
+    	for(int i = 0; i < n; i++) {
+    		lst.add(i);
+    	}
+        Collections.shuffle(lst);
+        notes = (Integer[]) lst.toArray();
+        
+        isHighlighted = new boolean[n];
     }
     
     /** @return the indices of this NoteIndices object */
     public Integer[] getNotes() { 
-        // TODO: fill me in
-        return null;
+        return notes;
     }
     
     /**
@@ -35,17 +47,16 @@ public class NoteIndices {
      * @param index the index to highlight
      */
     public void highlightNote(int index) {
-        // TODO: fill me in
+    	isHighlighted[index] = true;
     }
     
     /** @return true if the given index is highlighted */
     public boolean isHighlighted(int index) {
-        // TODO: fill me in
-        return false;
+    	return isHighlighted[index];
     }
     
     /** Clears all highlighted indices from this collection */
     public void clearAllHighlighted() {
-        // TODO: fill me in
+        isHighlighted = new boolean[isHighlighted.length];
     }
 }
