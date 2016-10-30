@@ -1,4 +1,4 @@
-package events;
+package edu.grinnell.sortingvisualizer.sortevents;
 
 import java.util.ArrayList;
 import java.util.List;
