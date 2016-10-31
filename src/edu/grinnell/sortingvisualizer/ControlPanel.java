@@ -143,8 +143,6 @@ public class ControlPanel extends JPanel {
                 Integer[] nts = Arrays.copyOf(notes.getNotes(), notes.getNotes().length);
                 final List<SortEvent<Integer>> events = generateEvents(
                 		(String) sorts.getSelectedItem(), nts);
-                System.out.println(Arrays.toString(notes.getNotes()));
-                System.out.println(events);
                 
                 // NOTE: The Timer class repetitively invokes a method at a
                 //       fixed interval.  Here we are specifying that method

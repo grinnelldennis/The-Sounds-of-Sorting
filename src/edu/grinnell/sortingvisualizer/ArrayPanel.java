@@ -11,6 +11,9 @@ public class ArrayPanel extends JPanel {
 
     private NoteIndices notes;
     
+    private static final Color COLOR_START = new Color(111, 0, 255);
+    private static final Color COLOR_END = new Color(0, 170, 255);
+    
     /**
      * Constructs a new ArrayPanel that renders the given note indices to
      * the screen.
@@ -34,10 +37,18 @@ public class ArrayPanel extends JPanel {
         	if(notes.isHighlighted(i)) {
         		g.setColor(Color.RED);
         	} else {
-        		g.setColor(Color.BLUE);
+        		g.setColor(getColorDiff(nts[i] + 1, nts.length));
         	}
         	int height = getHeight() / nts.length * (nts[i] + 1);
         	g.fillRect(rectWidth * i, getHeight() - height, rectWidth, height);
         }
+    }
+    
+    private Color getColorDiff(int num, int denom) {
+    	int r = (COLOR_END.getRed() - COLOR_START.getRed()) / denom,
+    		g = (COLOR_END.getGreen() - COLOR_START.getGreen()) / denom,
+    		b = (COLOR_END.getBlue() - COLOR_START.getBlue()) / denom;
+    	return new Color(COLOR_START.getRed() + r * num, COLOR_START.getGreen() + g * num,
+    			COLOR_START.getBlue() + b * num);
     }
 }

@@ -174,18 +174,8 @@ public class Sorts {
     }
     
 	public static <T> void eventSort(T[] arr, List<SortEvent<T>> events) {
-//		System.out.println("start: " + Arrays.toString(arr));
 		for(SortEvent<T> evt : events) {
 			evt.apply(arr);
-//			if(evt instanceof SwapEvent) {
-//				System.out.println("swapping " + evt.getAffectedIndices());
-//				System.out.println(Arrays.toString(arr));
-//			}
-//			if(evt instanceof CopyEvent) {
-//				CopyEvent<T> cpy = (CopyEvent<T>) evt;
-//				System.out.println("copying " + cpy.val + " into " + cpy.ind);
-//				System.out.println(Arrays.toString(arr));
-//			}
 		}
 	}
 }
