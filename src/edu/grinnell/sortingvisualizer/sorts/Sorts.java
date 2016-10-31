@@ -9,6 +9,11 @@ import edu.grinnell.sortingvisualizer.sortevents.SortEvent;
 import edu.grinnell.sortingvisualizer.sortevents.SwapEvent;
 
 public class Sorts {
+	
+	/**	Applying selection sort over an array of type T
+	 * @param arr, 	a generic type array
+	 * @return	a generic sorting events 
+	 */
 	public static <T extends Comparable<T>> List<SortEvent<T>> selectionSort(T[] arr) {
 		List<SortEvent<T>> evts = new ArrayList<>();
 		
@@ -34,6 +39,10 @@ public class Sorts {
 		return evts;
 	}
 
+	/**	Applying insertion sort over an array of type T
+	 * @param arr, 	a generic type array
+	 * @return	a list of generic sorting events 
+	 */
 	public static <T extends Comparable<T>> List<SortEvent<T>> insertionSort(T[] arr) {
 		List<SortEvent<T>> evts = new ArrayList<>();
 		
@@ -65,6 +74,10 @@ public class Sorts {
 		return evts;
 	}
 
+	/**	Applying bubble sort over an array of type T
+	 * @param arr, 	a generic type array
+	 * @return	a list of generic sorting events 
+	 */
 	public static <T extends Comparable<T>> List<SortEvent<T>> bubbleSort(T[] arr) {
 		List<SortEvent<T>> evts = new ArrayList<>();
 		
@@ -82,16 +95,31 @@ public class Sorts {
 		return evts;
 	}
 
+	/**	Applying merge sort over an array of type T
+	 * @param arr, 	a generic type array
+	 * @return	a list of generic sorting events 
+	 */
 	public static <T extends Comparable<T>> List<SortEvent<T>> mergeSort(T[] arr) {
 		List<SortEvent<T>> evts = new ArrayList<>();
 		mergeSort(arr, evts);
 		return evts;
 	}
 	
+	/**	Helper function for merge sort over an array of type T
+	 * @param x, 	a generic type array
+	 * @param evts,	a list of generic sorting events 
+	 */
 	public static <T extends Comparable<T>> void mergeSort(T[] x, List<SortEvent<T>> evts) {
 		mergeSort(x, 0, x.length-1, evts);
 	}
 
+	/**	Helper function for in-place merge sort over an array of type T, executes divide 
+	 *	  & conquer method over a generic array
+	 * @param x, 	 a generic type array
+	 * @param first, an integer >= 0 && < x.length - 1
+	 * @param last,	 an integer > 0 && < x.length - 1
+	 * @param evts,	 a list of generic sorting events 
+	 */
 	private static <T extends Comparable<T>> void mergeSort(T[] x, int first, int last,
 			List<SortEvent<T>> evts) {
 		int mid, lt, rt;
@@ -131,7 +159,10 @@ public class Sorts {
 		}
 	}
 
-
+	/**	Applying quick sort over an array of type T
+	 * @param arr, 	a generic type array
+	 * @return	a list of generic sorting events 
+	 */
 	public static <T extends Comparable<T>> List<SortEvent<T>> quickSort(T[] arr) {
 		List<SortEvent<T>> evts = new ArrayList<>();
 		if(arr.length != 0) {
@@ -140,6 +171,11 @@ public class Sorts {
 		return evts;
 	}
  
+	/**	Helper function for quick sort over an array of type T
+	 * @param arr, 		a generic type array
+	 * @param lowerIndex	an integer >= 0 && < x.length - 1
+	 * @param higherIndex	an integer > 0 && < x.length - 1
+	 */
     private static <T extends Comparable<T>> void quickSort(T[] arr, int lowerIndex, int higherIndex, List<SortEvent<T>> evts) {
         int i = lowerIndex;
         int j = higherIndex;
@@ -173,6 +209,10 @@ public class Sorts {
             quickSort(arr, i, higherIndex, evts);
     }
     
+	/**	Applies event sort onto arrary
+	 * @param arr, 	a generic type array
+	 * @return	a list of generic sorting events 
+	 */
 	public static <T> void eventSort(T[] arr, List<SortEvent<T>> events) {
 		for(SortEvent<T> evt : events) {
 			evt.apply(arr);
