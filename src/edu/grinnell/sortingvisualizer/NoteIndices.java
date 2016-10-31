@@ -32,7 +32,7 @@ public class NoteIndices {
     		lst.add(i);
     	}
         Collections.shuffle(lst);
-        notes = (Integer[]) lst.toArray();
+        notes = (Integer[]) lst.toArray(new Integer[lst.size()]);
         
         isHighlighted = new boolean[n];
     }
